@@ -24,12 +24,12 @@ const insertIntoDB = (0, catchAsync_1.default)((req, res) => __awaiter(void 0, v
         statusCode: http_status_1.default.OK,
         success: true,
         message: "Schedule created successfully!",
-        data: result
+        data: result,
     });
 }));
 const getAllFromDB = (0, catchAsync_1.default)((req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const filters = (0, pick_1.default)(req.query, ['startDate', 'endDate']);
-    const options = (0, pick_1.default)(req.query, ['limit', 'page', 'sortBy', 'sortOrder']);
+    const filters = (0, pick_1.default)(req.query, ["startDate", "endDate"]);
+    const options = (0, pick_1.default)(req.query, ["limit", "page", "sortBy", "sortOrder"]);
     const user = req.user;
     const result = yield schedule_service_1.ScheduleService.getAllFromDB(filters, options, user);
     (0, sendResponse_1.default)(res, {
@@ -37,7 +37,7 @@ const getAllFromDB = (0, catchAsync_1.default)((req, res) => __awaiter(void 0, v
         success: true,
         message: "Schedule fetched successfully!",
         data: result.data,
-        meta: result.meta
+        meta: result.meta,
     });
 }));
 const getByIdFromDB = (0, catchAsync_1.default)((req, res) => __awaiter(void 0, void 0, void 0, function* () {
@@ -46,7 +46,7 @@ const getByIdFromDB = (0, catchAsync_1.default)((req, res) => __awaiter(void 0, 
     (0, sendResponse_1.default)(res, {
         statusCode: http_status_1.default.OK,
         success: true,
-        message: 'Schedule retrieval successfully',
+        message: "Schedule retrieval successfully",
         data: result,
     });
 }));
@@ -56,7 +56,7 @@ const deleteFromDB = (0, catchAsync_1.default)((req, res) => __awaiter(void 0, v
     (0, sendResponse_1.default)(res, {
         statusCode: http_status_1.default.OK,
         success: true,
-        message: 'Schedule deleted successfully',
+        message: "Schedule deleted successfully",
         data: result,
     });
 }));
@@ -64,5 +64,5 @@ exports.ScheduleController = {
     insertIntoDB,
     getAllFromDB,
     getByIdFromDB,
-    deleteFromDB
+    deleteFromDB,
 };

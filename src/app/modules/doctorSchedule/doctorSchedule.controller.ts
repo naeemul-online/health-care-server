@@ -1,11 +1,11 @@
 import { Request, Response } from "express";
-import catchAsync from "../../../shared/catchAsync";
-import sendResponse from "../../../shared/sendResponse";
 import httpStatus from "http-status";
-import { DoctorScheduleService } from "./doctorSchedule.service";
-import { IAuthUser } from "../../interfaces/common";
+import catchAsync from "../../../shared/catchAsync";
 import pick from "../../../shared/pick";
+import sendResponse from "../../../shared/sendResponse";
+import { IAuthUser } from "../../interfaces/common";
 import { scheduleFilterableFields } from "./doctorSchedule.constants";
+import { DoctorScheduleService } from "./doctorSchedule.service";
 
 const insertIntoDB = catchAsync(
   async (req: Request & { user?: IAuthUser }, res: Response) => {
@@ -45,7 +45,7 @@ const getMySchedule = catchAsync(
 const deleteFromDB = catchAsync(
   async (req: Request & { user?: IAuthUser }, res: Response) => {
     const user = req.user;
-    const { id } = req.params;
+    const { id } = req.params as { id: string };
     const result = await DoctorScheduleService.deleteFromDB(
       user as IAuthUser,
       id,

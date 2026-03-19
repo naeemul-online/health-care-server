@@ -13,20 +13,20 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.DoctorController = void 0;
-const sendResponse_1 = __importDefault(require("../../../shared/sendResponse"));
 const http_status_1 = __importDefault(require("http-status"));
 const catchAsync_1 = __importDefault(require("../../../shared/catchAsync"));
-const doctor_service_1 = require("./doctor.service");
 const pick_1 = __importDefault(require("../../../shared/pick"));
+const sendResponse_1 = __importDefault(require("../../../shared/sendResponse"));
 const doctor_constants_1 = require("./doctor.constants");
+const doctor_service_1 = require("./doctor.service");
 const getAllFromDB = (0, catchAsync_1.default)((req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const filters = (0, pick_1.default)(req.query, doctor_constants_1.doctorFilterableFields);
-    const options = (0, pick_1.default)(req.query, ['limit', 'page', 'sortBy', 'sortOrder']);
+    const options = (0, pick_1.default)(req.query, ["limit", "page", "sortBy", "sortOrder"]);
     const result = yield doctor_service_1.DoctorService.getAllFromDB(filters, options);
     (0, sendResponse_1.default)(res, {
         statusCode: http_status_1.default.OK,
         success: true,
-        message: 'Doctors retrieval successfully',
+        message: "Doctors retrieval successfully",
         meta: result.meta,
         data: result.data,
     });
@@ -37,7 +37,7 @@ const getByIdFromDB = (0, catchAsync_1.default)((req, res) => __awaiter(void 0, 
     (0, sendResponse_1.default)(res, {
         statusCode: http_status_1.default.OK,
         success: true,
-        message: 'Doctor retrieval successfully',
+        message: "Doctor retrieval successfully",
         data: result,
     });
 }));
@@ -48,7 +48,7 @@ const updateIntoDB = (0, catchAsync_1.default)((req, res) => __awaiter(void 0, v
         statusCode: http_status_1.default.OK,
         success: true,
         message: "Doctor data updated!",
-        data: result
+        data: result,
     });
 }));
 const deleteFromDB = (0, catchAsync_1.default)((req, res) => __awaiter(void 0, void 0, void 0, function* () {
@@ -57,7 +57,7 @@ const deleteFromDB = (0, catchAsync_1.default)((req, res) => __awaiter(void 0, v
     (0, sendResponse_1.default)(res, {
         statusCode: http_status_1.default.OK,
         success: true,
-        message: 'Doctor deleted successfully',
+        message: "Doctor deleted successfully",
         data: result,
     });
 }));
@@ -67,24 +67,26 @@ const softDelete = (0, catchAsync_1.default)((req, res) => __awaiter(void 0, voi
     (0, sendResponse_1.default)(res, {
         statusCode: http_status_1.default.OK,
         success: true,
-        message: 'Doctor soft deleted successfully',
+        message: "Doctor soft deleted successfully",
         data: result,
     });
 }));
 const getAiSuggestion = (0, catchAsync_1.default)((req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { symptoms } = req.body;
     // Basic validation
-    if (!symptoms || typeof symptoms !== 'string' || symptoms.trim().length < 5) {
+    if (!symptoms || typeof symptoms !== "string" || symptoms.trim().length < 5) {
         return res.status(http_status_1.default.BAD_REQUEST).json({
             success: false,
-            message: 'Please provide valid symptoms for doctor suggestion (minimum 5 characters).',
+            message: "Please provide valid symptoms for doctor suggestion (minimum 5 characters).",
         });
     }
-    const result = yield doctor_service_1.DoctorService.getAISuggestion({ symptoms: symptoms.trim() });
+    const result = yield doctor_service_1.DoctorService.getAISuggestion({
+        symptoms: symptoms.trim(),
+    });
     (0, sendResponse_1.default)(res, {
         statusCode: http_status_1.default.OK,
         success: true,
-        message: 'AI doctor suggestions retrieved successfully',
+        message: "AI doctor suggestions retrieved successfully",
         data: result,
     });
 }));

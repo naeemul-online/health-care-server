@@ -1,9 +1,16 @@
 node_modules
 # Keep environment variables out of version control
-.env
+
 
 /generated/prisma
-
 .vercel
+dist/
+.env
+.env.local
+uploads/*
 
-render.yaml
+!uploads/.gitkeep
+*.log
+
+
+

@@ -26,30 +26,30 @@ const createAppointment = (0, catchAsync_1.default)((req, res) => __awaiter(void
         statusCode: http_status_1.default.OK,
         success: true,
         message: "Appointment booked successfully!",
-        data: result
+        data: result,
     });
 }));
 const getMyAppointment = (0, catchAsync_1.default)((req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const user = req.user;
-    const filters = (0, pick_1.default)(req.query, ['status', 'paymentStatus']);
-    const options = (0, pick_1.default)(req.query, ['limit', 'page', 'sortBy', 'sortOrder']);
+    const filters = (0, pick_1.default)(req.query, ["status", "paymentStatus"]);
+    const options = (0, pick_1.default)(req.query, ["limit", "page", "sortBy", "sortOrder"]);
     const result = yield appointment_service_1.AppointmentService.getMyAppointment(user, filters, options);
     (0, sendResponse_1.default)(res, {
         statusCode: http_status_1.default.OK,
         success: true,
-        message: 'My Appointment retrive successfully',
+        message: "My Appointment retrive successfully",
         data: result.data,
         meta: result.meta,
     });
 }));
 const getAllFromDB = (0, catchAsync_1.default)((req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const filters = (0, pick_1.default)(req.query, appointment_constant_1.appointmentFilterableFields);
-    const options = (0, pick_1.default)(req.query, ['limit', 'page', 'sortBy', 'sortOrder']);
+    const options = (0, pick_1.default)(req.query, ["limit", "page", "sortBy", "sortOrder"]);
     const result = yield appointment_service_1.AppointmentService.getAllFromDB(filters, options);
     (0, sendResponse_1.default)(res, {
         statusCode: http_status_1.default.OK,
         success: true,
-        message: 'Appointment retrieval successfully',
+        message: "Appointment retrieval successfully",
         meta: result.meta,
         data: result.data,
     });
@@ -62,8 +62,8 @@ const changeAppointmentStatus = (0, catchAsync_1.default)((req, res) => __awaite
     (0, sendResponse_1.default)(res, {
         statusCode: http_status_1.default.OK,
         success: true,
-        message: 'Appointment status changed successfully',
-        data: result
+        message: "Appointment status changed successfully",
+        data: result,
     });
 }));
 const createAppointmentWithPayLater = (0, catchAsync_1.default)((req, res) => __awaiter(void 0, void 0, void 0, function* () {
@@ -73,7 +73,7 @@ const createAppointmentWithPayLater = (0, catchAsync_1.default)((req, res) => __
         statusCode: http_status_1.default.OK,
         success: true,
         message: "Appointment booked successfully! You can pay later.",
-        data: result
+        data: result,
     });
 }));
 const initiatePayment = (0, catchAsync_1.default)((req, res) => __awaiter(void 0, void 0, void 0, function* () {
@@ -84,7 +84,7 @@ const initiatePayment = (0, catchAsync_1.default)((req, res) => __awaiter(void 0
         statusCode: http_status_1.default.OK,
         success: true,
         message: "Payment session created successfully",
-        data: result
+        data: result,
     });
 }));
 exports.AppointmentController = {
@@ -93,5 +93,5 @@ exports.AppointmentController = {
     getAllFromDB,
     changeAppointmentStatus,
     createAppointmentWithPayLater,
-    initiatePayment
+    initiatePayment,
 };

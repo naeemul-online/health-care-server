@@ -13,22 +13,22 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.AdminController = void 0;
-const admin_service_1 = require("./admin.service");
-const pick_1 = __importDefault(require("../../../shared/pick"));
-const admin_constant_1 = require("./admin.constant");
-const sendResponse_1 = __importDefault(require("../../../shared/sendResponse"));
 const http_status_1 = __importDefault(require("http-status"));
 const catchAsync_1 = __importDefault(require("../../../shared/catchAsync"));
+const pick_1 = __importDefault(require("../../../shared/pick"));
+const sendResponse_1 = __importDefault(require("../../../shared/sendResponse"));
+const admin_constant_1 = require("./admin.constant");
+const admin_service_1 = require("./admin.service");
 const getAllFromDB = (0, catchAsync_1.default)((req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const filters = (0, pick_1.default)(req.query, admin_constant_1.adminFilterableFields);
-    const options = (0, pick_1.default)(req.query, ['limit', 'page', 'sortBy', 'sortOrder']);
+    const options = (0, pick_1.default)(req.query, ["limit", "page", "sortBy", "sortOrder"]);
     const result = yield admin_service_1.AdminService.getAllFromDB(filters, options);
     (0, sendResponse_1.default)(res, {
         statusCode: http_status_1.default.OK,
         success: true,
         message: "Admin data fetched!",
         meta: result.meta,
-        data: result.data
+        data: result.data,
     });
 }));
 const getByIdFromDB = (0, catchAsync_1.default)((req, res) => __awaiter(void 0, void 0, void 0, function* () {
@@ -38,7 +38,7 @@ const getByIdFromDB = (0, catchAsync_1.default)((req, res) => __awaiter(void 0, 
         statusCode: http_status_1.default.OK,
         success: true,
         message: "Admin data fetched by id!",
-        data: result
+        data: result,
     });
 }));
 const updateIntoDB = (0, catchAsync_1.default)((req, res) => __awaiter(void 0, void 0, void 0, function* () {
@@ -48,7 +48,7 @@ const updateIntoDB = (0, catchAsync_1.default)((req, res) => __awaiter(void 0, v
         statusCode: http_status_1.default.OK,
         success: true,
         message: "Admin data updated!",
-        data: result
+        data: result,
     });
 }));
 const deleteFromDB = (0, catchAsync_1.default)((req, res) => __awaiter(void 0, void 0, void 0, function* () {
@@ -58,7 +58,7 @@ const deleteFromDB = (0, catchAsync_1.default)((req, res) => __awaiter(void 0, v
         statusCode: http_status_1.default.OK,
         success: true,
         message: "Admin data deleted!",
-        data: result
+        data: result,
     });
 }));
 const softDeleteFromDB = (0, catchAsync_1.default)((req, res) => __awaiter(void 0, void 0, void 0, function* () {
@@ -68,7 +68,7 @@ const softDeleteFromDB = (0, catchAsync_1.default)((req, res) => __awaiter(void 
         statusCode: http_status_1.default.OK,
         success: true,
         message: "Admin data deleted!",
-        data: result
+        data: result,
     });
 }));
 exports.AdminController = {
@@ -76,5 +76,5 @@ exports.AdminController = {
     getByIdFromDB,
     updateIntoDB,
     deleteFromDB,
-    softDeleteFromDB
+    softDeleteFromDB,
 };

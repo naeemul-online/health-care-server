@@ -1,5 +1,7 @@
 {
-  "name": "part-1",
+  "name": "healthcare-server",
+  "description": "AI Suggest doctors healthcare app",
+  "author": "Naeemul Islam - Full Stack Developer",
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
